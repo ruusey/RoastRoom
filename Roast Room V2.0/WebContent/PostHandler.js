@@ -23,3 +23,19 @@ function post() {
     
 }
 
+function getPosts() { 
+	
+		 $.ajax({
+		        url : "GetPosts",
+				type:"GET",
+				success:function(a,b,c){
+					$(document.body).append(a);
+				}
+		        	
+		    });
+		 
+	
+   
+    
+}
+
