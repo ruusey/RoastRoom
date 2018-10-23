@@ -1,0 +1,263 @@
+@CHARSET "ISO-8859-1";
+
+button {
+	overflow: hidden;
+  	background: #3498db;
+  	background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  	background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  	background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  	background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  	background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  	-webkit-border-radius: 28;
+  	-moz-border-radius: 28;
+  	border-radius: 28px;
+  	font-family: Arial;
+  	color: #ffffff;
+  	font-size: 20px;
+  	text-decoration: none;
+}
+
+button:hover {
+  	background: #3cb0fd;
+  	background-image: -webkit-linear-gradient(top, #3cb0fd, #3498db);
+  	background-image: -moz-linear-gradient(top, #3cb0fd, #3498db);
+  	background-image: -ms-linear-gradient(top, #3cb0fd, #3498db);
+  	background-image: -o-linear-gradient(top, #3cb0fd, #3498db);
+  	background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+  	text-decoration: none;
+}
+#newPostButton2{
+	 background: #ff4545;
+  	background-image: -webkit-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -moz-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -ms-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -o-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: linear-gradient(to bottom, #ff4545, #632d2d);
+  	-webkit-border-radius: 10;
+  	-moz-border-radius: 10;
+  	border-radius: 10px;
+  	text-shadow: 0px 3px 3px #666666;
+  	-webkit-box-shadow: 0px 5px 8px #050505;
+  	-moz-box-shadow: 0px 5px 8px #050505;
+  	box-shadow: 0px 5px 8px #050505;
+  	font-family: Georgia;
+  	color: #ffffff;
+  	font-size: 36px;
+  	padding: 10px 20px 10px 20px;
+  	text-decoration: none;
+}
+#newPostButton2:hover{
+	background: #1946fa;
+  	background-image: -webkit-linear-gradient(top, #1946fa, #3498db);
+  	background-image: -moz-linear-gradient(top, #1946fa, #3498db);
+  	background-image: -ms-linear-gradient(top, #1946fa, #3498db);
+  	background-image: -o-linear-gradient(top, #1946fa, #3498db);
+  	background-image: linear-gradient(to bottom, #1946fa, #3498db);
+  	text-decoration: none;
+}
+#newPostButton{
+	background: #ff4545;
+  	background-image: -webkit-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -moz-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -ms-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -o-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: linear-gradient(to bottom, #ff4545, #632d2d);
+  	-webkit-border-radius: 10;
+  	-moz-border-radius: 10;
+  	border-radius: 10px;
+  	text-shadow: 0px 3px 3px #666666;
+  	-webkit-box-shadow: 0px 5px 8px #050505;
+  	-moz-box-shadow: 0px 5px 8px #050505;
+ 	box-shadow: 0px 5px 8px #050505;
+  	font-family: Georgia;
+  	color: #ffffff;
+  	font-size: 36px;
+  	padding: 10px 20px 10px 20px;
+  	text-decoration: none;
+}
+#newPostButton:hover{
+	background: #1946fa;
+  	background-image: -webkit-linear-gradient(top, #1946fa, #3498db);
+ 	background-image: -moz-linear-gradient(top, #1946fa, #3498db);
+  	background-image: -ms-linear-gradient(top, #1946fa, #3498db);
+ 	background-image: -o-linear-gradient(top, #1946fa, #3498db);
+  	background-image: linear-gradient(to bottom, #1946fa, #3498db);
+  	text-decoration: none;
+}
+p {
+	overflow: hidden;
+    font-weight:normal;
+    font-variant:small-caps;
+    color:#000000;
+    letter-spacing:0pt;
+    word-spacing:2pt;
+    font-size:34px;
+    text-align:center;
+    font-family:arial black, sans-serif;
+    line-height:1;
+}
+.comment {
+	overflow: hidden;
+    font-weight:normal;
+    font-variant:small-caps;
+    color:#000000;
+    letter-spacing:0pt;
+    word-spacing:2pt;
+    font-size:18px;
+    text-align:left;
+    font-family:arial black, sans-serif;
+    line-height:1;
+}
+h2{
+	font-family: Verdana, sans-serif;
+	line-height: 1em;
+	color: #3498db;
+	font-weight:bold;
+	font-size: 46px;
+	text-shadow:0px 0px 0 rgb(21,121,188),1px 1px 0 rgb(0,100,167),2px 2px 0 rgb(-20,80,147),3px 3px 0 rgb(-41,59,126),4px 4px 0 rgb(-62,38,105), 5px 5px 0 rgb(-83,17,84),6px 6px 5px rgba(0,0,0,0.1),6px 6px 1px rgba(0,0,0,0.5),0px 0px 5px rgba(0,0,0,.2);}
+}
+h1{
+	overflow: hidden;
+	text-decoration: underline;
+}
+
+.post{
+	background-image: url("paper2.jpg");
+    margin: 0 auto;
+    width:40%;
+    height:auto;
+    padding-bottom:10px;
+    overflow: hidden;
+	-webkit-box-shadow: 0px 2px 15px 10px rgba(0, 0, 0, 1);
+    -moz-box-shadow:    0px 2px 15px 10px rgba(0, 0, 0, 1);
+    box-shadow:         0px 2px 15px 10px rgba(0, 0, 0, 1);
+    
+}
+.newPostDiv{
+	background-image: url("paper2.jpg");
+	position:fixed;
+	left: 50%;
+    margin-left: -250px;
+	height: 600px;
+    width: 500px;
+    overflow: auto;
+	-webkit-box-shadow: 0px 2px 15px 10px rgba(0, 0, 0, 1);
+    -moz-box-shadow:    0px 2px 15px 10px rgba(0, 0, 0, 1);
+    box-shadow:         0px 2px 15px 10px rgba(0, 0, 0, 1);
+    z-index: 11;
+    
+}
+form{
+	margin: 0 auto;
+}
+textarea{
+	maxlength:300;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	resize: none;
+	border: 3px solid #000000;
+	padding: 5px;
+	font-family: Georgia;
+	background: #DCDCDC;
+}
+textarea#postcontent{
+	maxlength:200;
+	display: block;
+    margin-left: auto;
+    margin-right: auto;
+	resize: none;
+	border: 3px solid #cccccc;
+	padding: 5px;
+	font-family: Georgia;
+	background: #DCDCDC;
+}
+.comment-button{
+	background: #ff4545;
+  	background-image: -webkit-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -moz-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -ms-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: -o-linear-gradient(top, #ff4545, #632d2d);
+  	background-image: linear-gradient(to bottom, #ff4545, #632d2d);
+  	-webkit-border-radius: 10;
+  	-moz-border-radius: 10;
+  	border-radius: 10px;
+  	text-shadow: 0px 3px 3px #666666;
+  	-webkit-box-shadow: 0px 5px 8px #050505;
+  	-moz-box-shadow: 0px 5px 8px #050505;
+  	box-shadow: 0px 5px 8px #050505;
+  	font-family: Georgia;
+  	color: #ffffff;
+  	font-size: 20px;
+  	padding: 10px 20px 10px 20px;
+  	text-decoration: none;
+}
+.comment-button:hover{
+	background: #1946fa;
+  	background-image: -webkit-linear-gradient(top, #1946fa, #3498db);
+  	background-image: -moz-linear-gradient(top, #1946fa, #3498db);
+  	background-image: -ms-linear-gradient(top, #1946fa, #3498db);
+  	background-image: -o-linear-gradient(top, #1946fa, #3498db);
+  	background-image: linear-gradient(to bottom, #1946fa, #3498db);
+  	text-decoration: none;
+}
+#commentHeader{
+	color: black;
+	text-decoration: underline;
+ 
+}
+#commentHeader:hover{
+	color: blue;
+	text-decoration: underline;
+ 
+}
+body{
+	background: rgb(255,255,255); /* Old browsers */
+	background: -moz-linear-gradient(top, rgba(255,255,255,1) 0%, rgba(246,246,246,1) 47%, rgba(237,237,237,1) 100%); /* FF3.6+ */
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(47%,rgba(246,246,246,1)), color-stop(100%,rgba(237,237,237,1))); /* Chrome,Safari4+ */
+	background: -webkit-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Chrome10+,Safari5.1+ */
+	background: -o-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* Opera 11.10+ */
+	background: -ms-linear-gradient(top, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* IE10+ */
+	background: linear-gradient(to bottom, rgba(255,255,255,1) 0%,rgba(246,246,246,1) 47%,rgba(237,237,237,1) 100%); /* W3C */
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#ededed',GradientType=0 ); /* IE6-9 */
+}
+.overlay {
+  display:none;
+  position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    z-index: 10;
+}
+.counter {
+	padding-right:110px;
+	overflow: hidden;
+     font-weight:normal;
+     font-variant:small-caps;
+     color:#000000;
+     letter-spacing:0pt;
+     word-spacing:2pt;
+     font-size:16px;
+     text-align:right;
+     font-family:arial black, sans-serif;
+     line-height:1;
+}
+.spanComments{
+	display: inline-block;
+	height: 100px;
+    width: 90%;
+    padding:5px;
+    margin: 0 auto;
+    border-radius:5px;
+    margin-right:5%;
+    margin-left:5%;
+    bottom:10px;
+    overflow: auto;
+	background: #ff8000;
+    z-index: 15;
+}
+.post-title{
+	text-align: center;
+}

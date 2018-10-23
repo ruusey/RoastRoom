@@ -1,0 +1,78 @@
+@CHARSET "ISO-8859-1";
+
+html {
+	margin: 0;
+	padding: 0;
+}
+
+div {
+	width: 400px;
+	height: 400px;
+	background-color: #bf432b;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border-style: ridge;
+	border-width: 10px;
+	border-color: #0080ff;
+	margin: auto;
+}
+
+body {
+	font: 75% georgia, sans-serif;
+	line-height: 1.88889;
+	color: #000000;
+	text-shadow: 1px 1px 1px white;
+	background: #0160fe;
+	margin: 0;
+	padding: 0;
+}
+
+p {
+	margin-top: 0;
+	text-align: justify;
+}
+
+h3 {
+	font: italic normal 1.4em georgia, sans-serif;
+	letter-spacing: 1px;
+	margin-bottom: 0;
+	color: #7D775C;
+}
+
+a:link {
+	font-weight: bold;
+	text-decoration: none;
+	color: #0080ff;
+}
+
+a:visited {
+	font-weight: bold;
+	text-decoration: none;
+	color: #0000ff;
+}
+
+a:hover, a:focus, a:active {
+	text-decoration: underline;
+	color: #ffffff;
+}
+
+abbr {
+	border-bottom: none;
+}
+
+p.one {
+	border-style: solid;
+	border-width: 5px; h1 { background-color : #03002f;
+	color: #03002f;
+	font: italic normal 1.4em georgia, sans-serif;
+}
+
+p {
+	background-color: #bf432b;
+	border-style: ridge;
+	border-width: 10px;
+	border-color: blue;
+}

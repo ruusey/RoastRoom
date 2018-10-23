@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Create New Post</title>
+<link href="icon.jpg" rel="icon" type="image/x-icon" />
+<link href="icon.jpg" rel="shortcut icon" type="image/x-icon" />
+<link rel="stylesheet" type="text/css" href="test.css">
+<script src="PostHandler.js"></script>
+<script src="CloseWindow.js"></script>
+
+</head>
+<body>
+	<form method="post" action="PostHandler" onClick="post()" id="postform">
+			<textarea name="postcontent" rows="10" cols="50" form="postform"></textarea>
+			<p class="submit">
+				<button id="newPostButton2" onClick="post()">Post</button>
+				<br>
+			</p>
+			<br>
+			<p>
+				<a href="Roast.jsp">Click to return home</a>.
+			</p>
+
+	</form>
+</body>
+</html>
