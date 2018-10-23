@@ -2,8 +2,7 @@
 
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1"%>
-<%@ page
-	import="java.io.*,java.sql.Connection,java.sql.DriverManager,java.sql.ResultSet,java.sql.SQLException,java.sql.Statement,javax.servlet.*,javax.servlet.annotation.WebServlet,javax.servlet.http.*"%>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -18,7 +17,6 @@
 <script src="PostHandler.js"></script>
 <script src="updateWordCount.js"></script>
 <script src="jquery.cookie.js"></script>
-<script src="Gruntfile.js"></script>
 <script src="uuid.js"></script>
 </head>
 <body>
