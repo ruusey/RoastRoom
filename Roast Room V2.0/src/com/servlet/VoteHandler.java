@@ -5,6 +5,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,6 +19,7 @@ public class VoteHandler extends HttpServlet {
 	/**
 	 * @author Robert Usey
 	 */
+    	Logger logger = Logger.getLogger(VoteHandler.class.getName());
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -29,14 +31,23 @@ public class VoteHandler extends HttpServlet {
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
 		
-		System.out.println("In Vote handler!");
 		//Get values from JQuery script calls
 		String id = request.getParameter("idValue");
 		String vote = request.getParameter("voteValue");
 		String sessionTracker = request.getParameter("sessionId");
 		String sip = request.getRemoteAddr();
+		int voteInt=0;
+		try {
+		    voteInt=Integer.parseInt(vote);
+		}catch(Exception e) {
+		    
+		}
+		if(voteInt==1) {
+		    logger.info("UUID: '"+sessionTracker + "' Upvoted post: " + id);
+		}else {
+		    logger.info("UUID: '"+sessionTracker + "' Downvoted post: " + id);
+		}
 		
-		System.out.println(sessionTracker + " " + id + " " + vote);
 
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
@@ -57,16 +68,17 @@ public class VoteHandler extends HttpServlet {
 			Connection conn = DriverManager.getConnection(url, USER, PASS);
 			//SQL statement
 			String sql = "INSERT INTO votes (user_id, content_id, vote, ip)"
-					+ "values (?, ?, ?, ?)" + "ON DUPLICATE KEY UPDATE vote=?;";
+					+ "values (?, ?, ?, ?)" + " ON DUPLICATE KEY UPDATE vote="+voteInt+";";
 			//Generate our prepared statement for the DB
 			PreparedStatement preparedStmt = conn.prepareStatement(sql);
 			preparedStmt.setString(1, sessionTracker);
 			preparedStmt.setString(2, id);
 			preparedStmt.setString(3, vote);
 			preparedStmt.setString(4, sip);
-			preparedStmt.setString(5, vote);
-
+//			preparedStmt.setString(5, vote);
+			System.out.println(preparedStmt.toString());
 			preparedStmt.execute();
+			
 
 		} catch (SQLException e) {
 			if (e.getMessage().toLowerCase().indexOf("duplicate") < 0) {

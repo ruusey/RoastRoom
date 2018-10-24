@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,6 +21,7 @@ public class PostHandler extends HttpServlet {
 	/**
 	 * @author Robert Usey
 	 */
+    Logger logger = Logger.getLogger(PostHandler.class.getName());
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -83,7 +85,7 @@ public class PostHandler extends HttpServlet {
 
 				e.printStackTrace();
 			}
-
+			logger.info("User: '"+user+"' created new post: '"+content+"'");
 		}
 
 	}

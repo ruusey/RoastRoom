@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,9 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/GetVoteCount")
 public class GetVoteCount extends HttpServlet {
 
-	/**
-	 * @author Robert Usey
-	 */
+    Logger logger = Logger.getLogger(GetVoteCount.class.getName());
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -71,6 +70,7 @@ public class GetVoteCount extends HttpServlet {
 
 			e.printStackTrace();
 		}
+		logger.info("Succesfully retrieved vote count for post '"+id+"'");
 		return votes;
 	}
 }

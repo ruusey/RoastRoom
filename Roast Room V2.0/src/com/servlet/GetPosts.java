@@ -7,6 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -22,9 +23,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/GetPosts")
 public class GetPosts extends HttpServlet{
 
-    /**
-     * 
-     */
+    Logger logger = Logger.getLogger(GetPosts.class.getName());
     private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
@@ -124,6 +123,7 @@ public class GetPosts extends HttpServlet{
 					buf.append(brk);
 					buf.append(brk);
 		 }
+		 logger.info("Succesfully retrieved all posts.");
 		 return buf.toString();
 		
 	} catch (SQLException e) {

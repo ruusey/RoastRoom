@@ -8,6 +8,7 @@ import java.sql.SQLException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.logging.Logger;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,9 +18,7 @@ import javax.servlet.http.HttpServletResponse;
 
 @WebServlet("/CommentHandler")
 public class CommentHandler extends HttpServlet {
-	/**
-	 * @author Robert Usey
-	 */
+    Logger logger = Logger.getLogger(CommentHandler.class.getName());
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request,
@@ -40,7 +39,7 @@ public class CommentHandler extends HttpServlet {
 		content = request.getParameter("commentValue");
 		postTime = dateFormat.format(date);
 
-		System.out.println(content + " " + name);
+		System.out.println();
 
 		if (!(content.length() > 0)) {
 			System.out
@@ -85,7 +84,7 @@ public class CommentHandler extends HttpServlet {
 
 				e.printStackTrace();
 			}
-
+			logger.info("Added new comment for post '"+name+"'");
 		}
 
 	}
