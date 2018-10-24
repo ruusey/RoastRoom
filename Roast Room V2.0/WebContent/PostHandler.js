@@ -23,12 +23,29 @@ function post() {
     
 }
 
-function getPosts() { 
-		var response = prompt("Whats the secret password?");
-		
+function getPosts() {
+	var input
+	if($.cookie("secret") == undefined){
+		input = prompt("Whats the secret password?");
 		 $.ajax({
 			 	beforeSend: function(request) {
-    				request.setRequestHeader("pass", response);
+    				request.setRequestHeader("pass", input);
+  				},
+		        url : "GetPosts",
+				type:"GET",
+				success:function(a,b,c){
+					$(document.body).append(a);
+					$.cookie("secret", input, { expires: 7 });
+				},
+				error: function(a,b,c){
+					getPosts();
+				}
+					
+		    });
+	}else{
+		 $.ajax({
+			 	beforeSend: function(request) {
+    				request.setRequestHeader("pass", $.cookie("secret"));
   				},
 		        url : "GetPosts",
 				type:"GET",
@@ -40,6 +57,10 @@ function getPosts() {
 				}
 					
 		    });
+	}
+		
+		
+		
 		 
 	
    

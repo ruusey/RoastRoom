@@ -53,7 +53,10 @@ $( document ).ready(function() {
 });
 
 </script>
-<button id="homebutton" onclick="window.location.href='/'">&#60;Home</button><h4 style = "text-align:right;">Build 1.1.0</h4>
+<button id="homebutton" onclick="window.location.href='/'">&#60;Home</button><h4 style = "text-align:right;">Build 1.2.0</h4>
+<center>
+<h1>Forum Rules: none</h1>
+</center>
 <div class = "overlay" id="overlay"></div>
 
 <div class="newPostDiv" id="NewPostDiv" style="display:none; height:480px" class="new_post" >
