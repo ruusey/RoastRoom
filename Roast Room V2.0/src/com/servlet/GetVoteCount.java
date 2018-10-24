@@ -50,7 +50,7 @@ public class GetVoteCount extends HttpServlet {
 			Statement st = conn.createStatement();
 			//Big ol SQL
 			ResultSet res = st
-					.executeQuery("select p.user,p.post,sum(v.vote) sv from forum.posts p,forum.votes v where p.id=v.content_id AND p.id="
+					.executeQuery("SELECT sum(v.vote) sv FROM votes v WHERE v.content_id="
 							+ id + ";");
 			//Get the sum of the votes
 			if (res.next()) {
