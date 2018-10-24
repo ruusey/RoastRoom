@@ -83,7 +83,7 @@ CREATE TABLE `votes` (
   `vote` tinyint(4) NOT NULL,
   `ip` varchar(20) DEFAULT NULL,
   PRIMARY KEY (`user_id`,`content_id`,`vote`),
-  UNIQUE KEY `user_id_UNIQUE` (`user_id`)
+  UNIQUE KEY `content_id_UNIQUE` (`content_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -93,7 +93,7 @@ CREATE TABLE `votes` (
 
 LOCK TABLES `votes` WRITE;
 /*!40000 ALTER TABLE `votes` DISABLE KEYS */;
-INSERT INTO `votes` VALUES ('57b4c312-2d6f-4326-8612-78ca989986b6',31,1,'71.68.146.246'),('d68d31c0-3e8b-4dc5-baea-6a682d3c6e5a',31,-1,'0:0:0:0:0:0:0:1');
+INSERT INTO `votes` VALUES ('57b4c312-2d6f-4326-8612-78ca989986b6',27,-1,'71.68.146.246'),('57b4c312-2d6f-4326-8612-78ca989986b6',28,1,'71.68.146.246'),('57b4c312-2d6f-4326-8612-78ca989986b6',29,1,'71.68.146.246'),('57b4c312-2d6f-4326-8612-78ca989986b6',30,1,'71.68.146.246'),('57b4c312-2d6f-4326-8612-78ca989986b6',31,1,'71.68.146.246');
 /*!40000 ALTER TABLE `votes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +106,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 20:46:01
+-- Dump completed on 2018-10-23 23:46:12
