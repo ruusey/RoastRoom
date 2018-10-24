@@ -24,14 +24,21 @@ function post() {
 }
 
 function getPosts() { 
-	
+		var response = prompt("Whats the secret password?");
+		
 		 $.ajax({
+			 	beforeSend: function(request) {
+    				request.setRequestHeader("pass", response);
+  				},
 		        url : "GetPosts",
 				type:"GET",
 				success:function(a,b,c){
 					$(document.body).append(a);
+				},
+				error: function(a,b,c){
+					getPosts();
 				}
-		        	
+					
 		    });
 		 
 	

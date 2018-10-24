@@ -27,12 +27,17 @@ public class GetPosts extends HttpServlet{
     private static final long serialVersionUID = 1L;
     protected void doGet(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
+	if(request.getHeader("pass").equals("chipsi123")) {
+	    PrintWriter out = response.getWriter();
+		//Get id of content and calculate the new votes
+		String html = GetAllPosts();
+		//Print out the votes so we can grab them for our update
+		out.println(html);
+	}else {
+	   response.sendError(HttpServletResponse.SC_UNAUTHORIZED,"Incorrect Password");
+	}
 	//Used to update the vote count after a vote is made
-	PrintWriter out = response.getWriter();
-	//Get id of content and calculate the new votes
-	String html = GetAllPosts();
-	//Print out the votes so we can grab them for our update
-	out.println(html);
+	
 }
     private String GetAllPosts() {
 	try {
