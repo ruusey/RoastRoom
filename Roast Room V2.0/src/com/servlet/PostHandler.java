@@ -71,7 +71,7 @@ public class PostHandler extends HttpServlet {
 				preparedStmt.setString(4, "Anonymous");
 
 				preparedStmt.execute();
-
+				conn.close();
 			} catch (SQLException e) {
 
 				e.printStackTrace();

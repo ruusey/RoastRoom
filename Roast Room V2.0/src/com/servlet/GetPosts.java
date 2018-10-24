@@ -28,9 +28,19 @@ public class GetPosts extends HttpServlet{
     protected void doGet(HttpServletRequest request,
 		HttpServletResponse response) throws ServletException, IOException {
 	if(request.getHeader("pass").equals("chipsi123")) {
+	    String session = null;
+	    String rawCookie = request.getHeader("Cookie");
+	    String[] rawCookieParams = rawCookie.split(";");
+	    for(String rawCookieNameAndValue :rawCookieParams)
+	    {
+	      String[] rawCookieNameAndValuePair = rawCookieNameAndValue.split("=");
+	      if(rawCookieNameAndValuePair[0].equals("sessionTracker")) {
+		  session = rawCookieNameAndValuePair[1];
+	      }
+	    }
 	    PrintWriter out = response.getWriter();
 		//Get id of content and calculate the new votes
-		String html = GetAllPosts();
+		String html = GetAllPosts(session);
 		//Print out the votes so we can grab them for our update
 		out.println(html);
 	}else {
@@ -39,7 +49,7 @@ public class GetPosts extends HttpServlet{
 	//Used to update the vote count after a vote is made
 	
 }
-    private String GetAllPosts() {
+    private String GetAllPosts(String session) {
 	try {
 		   Class.forName("com.mysql.jdbc.Driver");
 		}
@@ -55,7 +65,6 @@ public class GetPosts extends HttpServlet{
 		Connection conn = DriverManager.getConnection(url, USER, PASS);
 		
 		 Statement st = conn.createStatement();
-		 Statement st2 = conn.createStatement();
 		 Statement st3 = conn.createStatement();
 		 ResultSet res = st.executeQuery("SELECT * FROM posts ORDER BY id DESC"); 
 		 StringBuffer buf = new StringBuffer();
@@ -67,12 +76,14 @@ public class GetPosts extends HttpServlet{
 			 String content = res.getString("post");
 			 int id = res.getInt("id");
 			 int votes = 0;
+			 int upVotes=0;
+			 int downVotes=0;
+			 votes = GetVoteCount.getCountTotal(id);
 			 
-			 ResultSet res2 = st2.executeQuery("select p.user,p.post,sum(v.vote) sv from forum.posts p,forum.votes v where p.id=v.content_id AND p.id="+id+";");
-			 if(res2.next()){
-				 votes=res2.getInt("sv");
-			 }
-			 	
+			 upVotes= GetVoteCount.getCountUp(id);
+			 downVotes= GetVoteCount.getCountDown(id);
+			 int voted = GetVoteCount.getVoteStatus(session, id);
+			 System.out.println(" voted "+id+" "+voted);
 				String post = "<h1 class=\"post-title\">"+title+" @ "+timeStamp+"</h1>";
 				String brk = "<br>";
 				
@@ -84,10 +95,17 @@ public class GetPosts extends HttpServlet{
 				//<input value="Hello" type="button" onClick="gotoNode(result.name)" />​
 				String contents ="<p>"+content+"</p>";
 				
-				String upButton = "<button type="+"\""+"button"+"\""+"class="+"\""+"upvote-button"+"\" onClick=\"vote("+id+",1"+")\" >"+"Up Vote</button>";
+				String upButton = "<button type="+"\""+"button"+"\""+"id="+"\""+"buttonu-"+id+"\""+"class="+"\""+"upvote-button"+"\" onClick=\"vote("+id+",1"+")\" >"+"Up Vote</button>";
 				
-				String downButton = "<button type="+"\""+"button"+"\""+"class="+"\""+"downVote-button"+"\" onClick=\"vote("+id+",-1"+")\" >"+"Down Vote</button>";
-				
+				String downButton = "<button type="+"\""+"button"+"\""+"id="+"\""+"buttond-"+id+"\""+"class="+"\""+"downVote-button"+"\" onClick=\"vote("+id+",-1"+")\" >"+"Down Vote</button>";
+				if(voted==1) {
+				    
+				    upButton = "<button style='background-color:gray;background-image:none;' type="+"\""+"button"+"\""+"id="+"\""+"buttonu-"+id+"\""+"class="+"\""+"upvote-button"+"\" onClick=\"vote("+id+",1"+")\" disabled >"+"Up Vote</button>";
+				    downButton = "<button style='background-color:red;background-image:none;' type="+"\""+"button"+"\""+"id="+"\""+"buttond-"+id+"\""+"class="+"\""+"downVote-button"+"\" onClick=\"vote("+id+",-1"+")\" >"+"Down Vote</button>";
+				}else if(voted==-1) {
+				    upButton = "<button style='background-color:green;background-image:none;' type="+"\""+"button"+"\""+"id="+"\""+"buttonu-"+id+"\""+"class="+"\""+"upvote-button"+"\" onClick=\"vote("+id+",1"+")\" >"+"Up Vote</button>";
+				    downButton = "<button style='background-color:gray;background-image:none;' type="+"\""+"button"+"\""+"id="+"\""+"buttond-"+id+"\""+"class="+"\""+"downVote-button"+"\" onClick=\"vote("+id+",-1"+")\" disabled >"+"Down Vote</button>";
+				}
 				String commentButton = "<button type="+"\""+"button"+"\""+"class="+"\""+"comment-button"+"\" onClick=\"comment("+id+")\" >"+"Comment</button>";
 				
 				buf.append("  <div id=\""+id+"\"class=\"post\">");
@@ -102,7 +120,9 @@ public class GetPosts extends HttpServlet{
 					
 				buf.append("		  "+downButton);
 					
-				buf.append("		  "+"<h2 id=v"+id+">"+votes+"</h2>");
+				buf.append("		  "+"<h2 id='v"+id+"'>"+votes+"</h2>");
+				buf.append("		  "+"<h2 id='vup"+id+"' style='color:green;'>"+upVotes+"</h2>");
+				buf.append("		  "+"<h2 id='vdwn"+id+"' style='color:red;'>"+downVotes+"</h2>");
 					
 				buf.append("		  "+"<textarea maxlength=\"300\" oninput=\"updateCount("+id+")\" " + "id=\""+id+"comment"+"\" name=\"postcontent\" rows=\"10\" cols=\"50\" form=\"postform\"></textarea>" +
 									  "<p class=\"counter\" id=\"wordCount"+id+"\">0</p>");
@@ -123,24 +143,28 @@ public class GetPosts extends HttpServlet{
 					    buf.append("		"+"<p class=\"comment\">"+commentCount+") "+res3.getString("comment")+"</p>");
 						commentCount++;
 					}
+					
 					buf.append("  	  </span>");
 					buf.append("  </div>");
 					buf.append(brk);
 					buf.append(brk);
+					res3.close();
+					
+					
+					
 		 }
+		 st3.close();
+		 st.close();
+		 res.close();
 		 logger.info("Succesfully retrieved all posts.");
+		 conn.close();
 		 return buf.toString();
 		
-	} catch (SQLException e) {
+	} catch (Exception e) {
 		e.printStackTrace();
 		System.out.println("SQL EXCEPTION");
-	} catch (InstantiationException e) {
-		System.out.println("INSTANTIATION EXCEPTION");
-	} catch (IllegalAccessException e) {
-		System.out.println("ILLEGAL ACCESS EXCEPTION");
-	} catch (ClassNotFoundException e) {
-		System.out.println("CLASS NOT FOUND EXCEPTION EXCEPTION");
-	}
+	} 
+	
 	return null;
     }
 

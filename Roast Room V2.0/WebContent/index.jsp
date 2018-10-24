@@ -8,7 +8,7 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Recent Posts</title>
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<script src="jquery.js"></script>
 <link href="icon.jpg" rel="icon" type="image/x-icon" />
 <link href="icon.jpg" rel="shortcut icon" type="image/x-icon" />
 <link rel="stylesheet" type="text/css" href="test.css">
@@ -40,16 +40,16 @@ $( document ).ready(function() {
 			
 			var newSession=generateUUID();
 			$.cookie("sessionTracker", newSession, { expires: 7 });
-			
+			getPosts();
 			
 		}else{
-			
+			getPosts();
 		}
 	}else{
 		alert("You wont be able to vote without cookies enabled");
 	}
 	
-	getPosts();
+	
 });
 
 </script>

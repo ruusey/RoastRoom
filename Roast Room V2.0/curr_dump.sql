@@ -82,8 +82,7 @@ CREATE TABLE `votes` (
   `content_id` int(11) NOT NULL,
   `vote` tinyint(4) NOT NULL,
   `ip` varchar(20) DEFAULT NULL,
-  PRIMARY KEY (`user_id`,`content_id`,`vote`),
-  UNIQUE KEY `content_id_UNIQUE` (`content_id`)
+  PRIMARY KEY (`content_id`,`user_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -93,7 +92,7 @@ CREATE TABLE `votes` (
 
 LOCK TABLES `votes` WRITE;
 /*!40000 ALTER TABLE `votes` DISABLE KEYS */;
-INSERT INTO `votes` VALUES ('57b4c312-2d6f-4326-8612-78ca989986b6',27,-1,'71.68.146.246'),('57b4c312-2d6f-4326-8612-78ca989986b6',28,1,'71.68.146.246'),('57b4c312-2d6f-4326-8612-78ca989986b6',29,1,'71.68.146.246'),('57b4c312-2d6f-4326-8612-78ca989986b6',30,1,'71.68.146.246'),('57b4c312-2d6f-4326-8612-78ca989986b6',31,1,'71.68.146.246');
+INSERT INTO `votes` VALUES ('73aee8d6-f8b1-4257-ba43-3a6d3dbc0fb4',28,1,'71.68.146.246'),('73aee8d6-f8b1-4257-ba43-3a6d3dbc0fb4',29,1,'71.68.146.246'),('1dcf1e1e-e4d5-4e0e-9e98-5acca92908d4',30,1,'71.68.146.246'),('73aee8d6-f8b1-4257-ba43-3a6d3dbc0fb4',30,1,'71.68.146.246'),('1dcf1e1e-e4d5-4e0e-9e98-5acca92908d4',31,-1,'71.68.146.246'),('73aee8d6-f8b1-4257-ba43-3a6d3dbc0fb4',31,-1,'71.68.146.246'),('e4c7c9eb-1fb6-48bf-a3c4-7f30aec3e3dd',31,-1,'71.68.146.246'),('edb02374-6726-43c0-8425-04c880675b5a',31,-1,'71.68.146.246');
 /*!40000 ALTER TABLE `votes` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -106,4 +105,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2018-10-23 23:46:12
+-- Dump completed on 2018-10-24  9:09:44

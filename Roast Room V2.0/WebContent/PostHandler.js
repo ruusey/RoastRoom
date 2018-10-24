@@ -24,9 +24,9 @@ function post() {
 }
 
 function getPosts() {
-	var input
+	var input="";
 	if($.cookie("secret") == undefined){
-		input = prompt("Whats the secret password?");
+		input = window.prompt("Whats the secret password?");
 		 $.ajax({
 			 	beforeSend: function(request) {
     				request.setRequestHeader("pass", input);
@@ -34,10 +34,12 @@ function getPosts() {
 		        url : "GetPosts",
 				type:"GET",
 				success:function(a,b,c){
-					$(document.body).append(a);
 					$.cookie("secret", input, { expires: 7 });
+					$(document.body).append(a);
+					
 				},
 				error: function(a,b,c){
+					console.log(a);
 					getPosts();
 				}
 					
@@ -53,6 +55,7 @@ function getPosts() {
 					$(document.body).append(a);
 				},
 				error: function(a,b,c){
+					console.log(a);
 					getPosts();
 				}
 					

@@ -70,7 +70,7 @@ public class CommentHandler extends HttpServlet {
 				preparedStmt.setString(4, user);
 
 				preparedStmt.execute();
-
+				conn.close();
 			} catch (SQLException e) {
 
 				e.printStackTrace();

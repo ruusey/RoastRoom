@@ -37,8 +37,10 @@ public class VoteHandler extends HttpServlet {
 		String sessionTracker = request.getParameter("sessionId");
 		String sip = request.getRemoteAddr();
 		int voteInt=0;
+		int idInt=0;
 		try {
 		    voteInt=Integer.parseInt(vote);
+		    idInt=Integer.parseInt(id);
 		}catch(Exception e) {
 		    
 		}
@@ -67,8 +69,13 @@ public class VoteHandler extends HttpServlet {
 
 			Connection conn = DriverManager.getConnection(url, USER, PASS);
 			//SQL statement
-			String sql = "INSERT INTO votes (user_id, content_id, vote, ip)"
+			
+			String sql =null;
+			
+			    sql = "INSERT INTO votes (user_id, content_id, vote, ip)"
 					+ "values (?, ?, ?, ?)" + " ON DUPLICATE KEY UPDATE vote="+voteInt+";";
+			
+			
 			//Generate our prepared statement for the DB
 			PreparedStatement preparedStmt = conn.prepareStatement(sql);
 			preparedStmt.setString(1, sessionTracker);
@@ -78,7 +85,7 @@ public class VoteHandler extends HttpServlet {
 //			preparedStmt.setString(5, vote);
 			System.out.println(preparedStmt.toString());
 			preparedStmt.execute();
-			
+			conn.close();
 
 		} catch (SQLException e) {
 			if (e.getMessage().toLowerCase().indexOf("duplicate") < 0) {
